@@ -88,16 +88,18 @@ export default class SkewableView extends Component {
                             overflow: 'hidden',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            borderBottomWidth: 1,
-                            borderBottomColor: 'rgba(0, 0, 0, 0.3)'
+                            borderWidth: 1,
+                            borderColor: 'rgba(0, 0, 0, 0.2)',
+                            borderRadius: 4
                         }}>
                             <ScrollView style={{
                                 height: this.props.boundingBoxHeight,
                                 transform:[{ rotateZ: -1*(angleDeg+additionalAngle) + 'deg' }],
                                 width:this.props.boundingBoxWidth,
                                 backgroundColor: this.props.backgroundColor,
-                                borderBottomWidth: 3,
-                                borderBottomColor: 'rgba(0, 0, 0, 0.3)',
+                                borderBottomWidth: 1,
+                                borderBottomColor: 'rgba(0, 0, 0, 0.2)',
+                                borderBottomRadius: 4
                             }}>
                                 {this.props.children}
                             </ScrollView>
