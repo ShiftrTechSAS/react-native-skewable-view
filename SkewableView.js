@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Platform } from 'react-native';
 
 export default class SkewableView extends Component {
     constructor(props) {
@@ -90,7 +90,11 @@ export default class SkewableView extends Component {
                             alignItems: 'center',
                             borderWidth: 1,
                             borderColor: 'rgba(0, 0, 0, 0.2)',
-                            borderRadius: 4
+                            ...Platform.select({
+                                ios: {
+                                    borderRadius: 4
+                                }
+                            }),
                         }}>
                             <ScrollView style={{
                                 height: this.props.boundingBoxHeight,
@@ -99,7 +103,15 @@ export default class SkewableView extends Component {
                                 backgroundColor: this.props.backgroundColor,
                                 borderBottomWidth: 1,
                                 borderBottomColor: 'rgba(0, 0, 0, 0.2)',
-                                borderBottomRadius: 4
+                                ...Platform.select({
+                                    ios: {
+                                        borderBottomRadius: 4,
+                                        borderBottomWidth: 1
+                                    },
+                                    android: {
+                                        borderBottomWidth: 2,
+                                    }
+                                }),
                             }}>
                                 {this.props.children}
                             </ScrollView>
